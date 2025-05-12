@@ -1,0 +1,70 @@
+DROP DATABASE IF exists prueba;
+CREATE DATABASE prueba;
+USE prueba;
+
+CREATE TABLE TipoDocumento (
+IdDocumento Integer (10) Primary Key,
+NumDocumento Integer (10) NOT NULL
+);
+
+CREATE table Usuario (
+NumDocumento integer (10) primary key,
+TipoDeDocumento tinyint(3),
+Nombre varchar(20) not null,
+SegNombre varchar(20),
+Apellido varchar(20) not null,
+SegApellido varchar(20),
+Correo varchar(50)
+);
+
+Create Table Roles(
+IdRol integer (10) primary key,
+NomRol Varchar(50)
+);
+
+Create table Factura(
+IdFactura integer(20) auto_increment primary key,
+TipoDocumento tinyint(3),
+idProducto integer(10),
+Valor decimal(19,0) auto_increment,
+iddocumento tinyint(10),
+usuarionumdoc integer(10),
+fecha time(6)
+);
+
+Create table Pago(
+idpago tinyint(10) auto_increment primary key,
+metodopago varchar(60)
+);
+
+create table Departamento(
+idDepartamento integer(10) primary key,
+NomDep integer(10)
+);
+
+create table Direcciones(
+idUsuario integer(10) primary key,
+Direccion varchar(60),
+IdCity integer(20),
+IdDepart integer(20),
+NomCity varchar(30),
+NomDepart varchar(30)
+);
+
+create table ciudad(
+IdCiudad integer(10) primary key,
+NombreCiudad varchar(60)
+);
+
+create table producto(
+idProducto integer(10) primary key,
+NombreProducto varchar (60)
+);
+
+ALTER TABLE Usuario
+ADD constraint FKTipoDeDocumento
+FOREIGN KEY (TipoDeDocumento) References TipoDocumento(IdDocumento);
+
+
+
+ 
