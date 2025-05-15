@@ -62,7 +62,7 @@ NombreProducto varchar (60)
 );
 
 ALTER TABLE usuario
-ADD constraint fkusuario FOREIGN KEY (NumDocumento) References Tipodocumento(IdDocumento);
+ADD constraint fkusuario FOREIGN KEY (TipoDeDocumento) References Tipodocumento(IdDocumento);
 
 alter table roles
 ADD foreign key (IdRol) references usuario(NumDocumento);
