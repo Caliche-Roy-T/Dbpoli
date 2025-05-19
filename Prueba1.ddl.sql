@@ -3,13 +3,13 @@ CREATE DATABASE prueba;
 USE prueba;
 
 CREATE TABLE TipoDocumento (
-IdDocumento tinyint (10) auto_increment Primary Key,
+IdDocumento tinyint auto_increment Primary Key,
 NombreDocumento varchar(60) NOT NULL
 );
 
 CREATE table Usuario (
 NumDocumento integer (10) primary key,
-TipoDeDocumento tinyint(3),
+TipoDeDocumento tinyint,
 Nombre varchar(20) not null,
 SegNombre varchar(20),
 Apellido varchar(20) not null,
@@ -24,16 +24,16 @@ NomRol Varchar(50)
 
 Create table Factura(
 IdFactura integer(20) auto_increment primary key,
-TipoDocumento tinyint(3),
+TipoDocumento tinyint,
 idProducto integer(10),
 Valor integer(10),
-iddocumento tinyint(10),
+iddocumento tinyint,
 usuarionumdoc integer(10),
 fecha time(6)
 );
 
 Create table Pago(
-idpago tinyint(10) auto_increment primary key,
+idpago tinyint auto_increment primary key,
 metodopago varchar(60)
 );
 
@@ -62,12 +62,9 @@ NombreProducto varchar (60)
 );
 
 ALTER TABLE usuario
-ADD constraint fkusuario FOREIGN KEY (TipoDeDocumento) References Tipodocumento(IdDocumento);
+ADD constraint fkusuario 
+FOREIGN KEY (TipoDeDocumento) References TipoDocumento(IdDocumento);
 
-alter table roles
-ADD foreign key (IdRol) references usuario(NumDocumento);
-
-
-
-
- 
+Alter table departamento
+add constraint fkdepartamento
+foreign key (idDepartamento) references direcciones(IdUsuario)
